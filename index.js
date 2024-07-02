@@ -10,7 +10,7 @@ const paddyDiseaseRouter = require('./routes/routePaddyDisease')
 app.use('/disease', paddyDiseaseRouter);
 
 app.get("/", (req, res) => {
-    return res.status(200).send("Hai there");
+    return res.status(200).send("Hai, ini halaman disease ganteng");
   });
 
 app.use(express.json())
