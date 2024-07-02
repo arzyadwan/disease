@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/skripsi-423702/paddycure/berita:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-southeast2-docker.pkg.dev/skripsi-423702/paddycure/berita:$COMMIT_SHA']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'berita', '--image', 'asia-southeast2-docker.pkg.dev/skripsi-423702/paddycure/berita:$COMMIT_SHA', '--region', 'asia-southeast2']
+images:
+  - 'asia-southeast2-docker.pkg.dev/skripsi-423702/paddycure/berita:$COMMIT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
